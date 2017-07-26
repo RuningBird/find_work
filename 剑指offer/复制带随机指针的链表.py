@@ -5,6 +5,7 @@ class RandomListNode:
         self.random = None
 
 
+
 class Solution:
     # @param head: A RandomListNode
     # @return: A RandomListNode
