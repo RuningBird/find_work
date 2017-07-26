@@ -19,21 +19,30 @@ class Solution:
     head = None
 
     def bstToDoublyList(self, root):
-        pass
+        if root:
+            self.io(root)
+            return self.make_dList()
+        else:
+            return None
 
     def make_dList(self):
+        self.res.reverse()
         if self.res:
             self.head = DoublyListNode(0)
+            tail = self.head
+
         while self.res:
             val = self.res.pop()
             s = DoublyListNode(val)
 
-            s.next = self.head.next
-            self.head.next = s  # 头插法
-            s.prev = self.head
+            s.next = tail.next
+            s.prev = tail
+            tail.next = s  # 尾插法
+
+            tail = tail.next
 
         self.head = self.head.next
-        return self.head.next
+        return self.head
 
     def show_dList(self):
         p = self.head
@@ -41,14 +50,14 @@ class Solution:
             print(p.val, end=' ')
             p = p.next
 
-    def io(self, root):
+    def io(self, root):  # 中序遍历二叉树
         if root:
             self.io(root.left)
             self.res.append(root.val)
             self.io(root.right)
 
 
-ls = [1, 2, 3]
+ls = [1, 2, 3, 4, 5]
 so = Solution()
 so.res = ls
 so.make_dList()
