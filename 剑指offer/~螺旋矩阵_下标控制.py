@@ -87,7 +87,7 @@ class Solution:
                 if self.matrix[i]:
                     val = self.matrix[i][cl]
                     right.append(val)  # 取出右边的元素
-                    self.matrix[i].remove(val)
+                    self.matrix[i].pop(cl)
             if right:
                 self.ans.extend(right)
 
@@ -107,7 +107,7 @@ class Solution:
                 if self.matrix[i]:
                     val = self.matrix[i][0]
                     left.insert(0, val)
-                    self.matrix[i].remove(val)
+                    self.matrix[i].pop(0)
             if left:
                 self.ans.extend(left)
 
