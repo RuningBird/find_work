@@ -49,13 +49,18 @@ class Solution:
     def stack_method(self, ha, hb):
         if ha and hb:
             p, q = ha, hb
-            sa = sb = []
+            sa = []
+            sb = []
             while p:
-                sa.append(p)
+                tmp = ListNode(p.val)
+                tmp.next = p.next
+                sa.append(tmp)
                 p = p.next
 
             while q:
-                sb.append(q)
+                tmp = ListNode(q.val)
+                tmp.next = q.next
+                sb.append(tmp)
                 q = q.next
 
             res = None
@@ -63,6 +68,8 @@ class Solution:
                 p, q = sa.pop(), sb.pop()
                 if p.val == q.val:
                     res = p
+                else:
+                    break
             return res
 
     # 蛮力法
@@ -77,6 +84,14 @@ class Solution:
                     q = q.next
                 p = p.next
 
+    def show_list(self, h):
+        if h:
+            p = h
+            while p:
+                print(p.val, end=' ')
+                p = p.next
+
+
 a1 = ListNode(1)
 a2 = ListNode(2)
 a3 = ListNode(3)
@@ -86,3 +101,12 @@ a2.next = a3
 b1 = ListNode(1)
 b2 = ListNode(2)
 b3 = ListNode(3)
+b1.next = b2
+b2.next = b3
+
+so = Solution()
+so.show_list(a1)
+so.show_list(b1)
+
+p = so.getIntersectionNode(a1, b1)
+print(p.val)
