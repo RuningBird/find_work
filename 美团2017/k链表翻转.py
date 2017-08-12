@@ -16,16 +16,20 @@ def reverse_all(head):
     hres = LNode(0)
     q = head
     while q:
-        tmp = LNode(q.val)
+        tmp =q
+        q = q.next
+
         tmp.next = hres.next
         hres.next = tmp
 
-        q = q.next
 
     res = hres.next
     return res
 
-
+'''
+@:parameter head 待翻转链表
+@:parameter k  翻转位置
+'''
 def k_reverse(head, k):
     res = None
     if head:
@@ -40,10 +44,11 @@ def k_reverse(head, k):
             q = head
 
             while q != p:
-                tmp = LNode(q.val)
+                tmp = q
+                q = q.next
+
                 tmp.next = nhead.next
                 nhead.next = tmp
-                q = q.next
 
             tail = nhead  # 前半部分尾指针
             while tail.next:
@@ -62,7 +67,7 @@ def k_reverse(head, k):
     else:  # 链表为空
         return res
 
-
+#  测试用例
 node1 = LNode(1)
 node2 = LNode(2)
 node3 = LNode(3)
@@ -72,7 +77,7 @@ node1.next = node2
 node2.next = node3
 node3.next = node4
 
-node1.show()
+node1.show()# 显示原链表
 
 res = k_reverse(node1, 2)
-res.show()
+res.show() # k翻转之后链表
