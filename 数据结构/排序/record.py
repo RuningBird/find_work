@@ -26,6 +26,7 @@ class record:
 
             left = 1
             right = i - 1
+            # mid = (left + right) // 2
 
             while left <= right:  # 寻找插入位置
                 mid = (left + right) // 2
@@ -34,10 +35,16 @@ class record:
                 else:
                     left = mid + 1
 
-            for j in range(left, i)[::-1]:
+            for j in range(left, i)[::-1]: # 移动元素
                 self.key[j + 1] = self.key[j]
 
-            self.key[mid] = self.key[0]
+            # while版本移动元素位置
+            # j = i - 1
+            # while j >= left:
+            #     self.key[j + 1] = self.key[j]
+            #     j -= 1
+
+            self.key[left] = self.key[0]
 
 
 obj = record([2, 1, 3])
