@@ -35,7 +35,7 @@ class record:
                 else:
                     left = mid + 1
 
-            for j in range(left, i)[::-1]: # 移动元素
+            for j in range(left, i)[::-1]:  # 移动元素
                 self.key[j + 1] = self.key[j]
 
             # while版本移动元素位置
@@ -46,7 +46,13 @@ class record:
 
             self.key[left] = self.key[0]
 
+    # 希尔排序
+    def shell_insert(self):
+        rec = self.key
 
-obj = record([2, 1, 3])
+        self.key = rec
+
+
+obj = record([i for i in range(1, 10)[::-1]])
 obj.binary_sort()
 obj.show_record()
